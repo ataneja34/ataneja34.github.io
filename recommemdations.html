@@ -90,8 +90,8 @@
         <select id="sortSelect" onchange="sortProducts()">
             <option value="time-asc">Time: Low to High</option>
             <option value="time-desc">Time: High to Low</option>
-            <option value="title-asc">Title: A to Z</option>
-            <option value="title-desc">Title: Z to A</option>
+            <option value="title-asc">Show Name: A to Z</option>
+            <option value="title-desc">Show Name: Z to A</option>
         </select>
     </div>
 
@@ -243,9 +243,9 @@
         } else if (sortValue === 'time-desc') {
             products.sort((a, b) => b.durationMinutes - a.durationMinutes);
         } else if (sortValue === 'title-asc') {
-            products.sort((a, b) => a.title.localeCompare(b.title));
+            products.sort((a, b) => a.showName.localeCompare(b.showName));
         } else if (sortValue === 'title-desc') {
-            products.sort((a, b) => b.title.localeCompare(a.title));
+            products.sort((a, b) => b.showName.localeCompare(a.showName));
         }
 
         // Regenerate the product list after sorting
