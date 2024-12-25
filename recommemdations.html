@@ -134,7 +134,8 @@
     
 
     function readCSV() {
-        
+        episodes = [];
+        products = [];
         fetch('episodes.txt')
         .then(response => {
                 // Check if the request was successful
@@ -144,7 +145,6 @@
                 return response.text(); // Read the CSV file as text
             })
         .then(csvData => {
-                console.log(csvData)
                 const rows = csvData.split('\n');
                 item = rows.map(row => row.split(','));
 
@@ -153,9 +153,7 @@
                     const parts = row.split(',')[0].split('/');
                     episode.id = parts[parts.length - 1]
                     episode.ashimaDescription = row.split(',')[1]
-                    console.log(episode)
                     episodes.push(episode)
-                    console.log(episodes)
                 });
 
                 
@@ -181,7 +179,6 @@
     }
 
     async function displayEpisodes() {
-
       try {
         const token = await getAccessToken();
         for (let i = 0; i < episodes.length; i++) {
@@ -210,11 +207,9 @@
 
     // Function to generate product cards dynamically
     function generateProductCards() {
+        let productListData = ''
         const productList = document.getElementById('product-list');
-        productList.innerHTML = ''; // Clear the existing product list
-    
-        displayEpisodes()
-        // Loop through each product in the array
+        productList.innerHTML = ''; 
         products.forEach(product => {
             const productCard = `
                 <div class="product-card">
@@ -227,8 +222,9 @@
                 </div>
             `;
             // Append the generated HTML to the product-list div
-            productList.innerHTML += productCard;
+            productListData += productCard;
         });
+        productList.innerHTML = productListData;
     }
 
     // Function to sort products based on selected criteria
