@@ -144,8 +144,7 @@
                 return response.text(); // Read the CSV file as text
             })
         .then(csvData => {
-                // Log the raw CSV data
-                // Parse the CSV data
+                console.log(csvData)
                 const rows = csvData.split('\n');
                 item = rows.map(row => row.split(','));
 
