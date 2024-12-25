@@ -218,7 +218,9 @@
                     <p>${product.showName}</p>
                     <p>${product.description}</p>
                     <p class="time">${product.durationMinutes} minutes</p>
-                    <button class="listen-btn">Listen Here</button>
+                    <a href="https://open.spotify.com/episode/${product.id}">
+                       <button class="listen-btn">Listen Here</button>
+                    </a>
                 </div>
             `;
             // Append the generated HTML to the product-list div
