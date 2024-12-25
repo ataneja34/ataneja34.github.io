@@ -102,14 +102,13 @@
 
 <script>
     let products = [];
-    let episodes = []
+    let episodes = [];
 
     function getQueryParameter(password) {
         const urlParams = new URLSearchParams(window.location.search);
         return urlParams.get(password);
     }
 
-    // const password = getQueryParameter('password');
     const clientId =  getQueryParameter('password').slice(0, 32) 
     const clientSecret = getQueryParameter('password').slice(-32) ; 
 
